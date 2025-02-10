@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="urdf_asm">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="5.0943E-06 -0.00091976 0.009145"
+        rpy="0 0 0" />
+      <mass
+        value="0.16" />
+      <inertia
+        ixx="1.9737E-05"
+        ixy="3.0831E-11"
+        ixz="-1.3104E-14"
+        iyy="1.8488E-05"
+        iyz="4.5147E-08"
+        izz="3.6447E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 1 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.01"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/base_link.STL" /> -->
+        <box size="0.07 0.07 0.02" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Upper0_Link">
+    <inertial>
+      <origin
+        xyz="0.020919 0.016029 0.0015329"
+        rpy="0 0 0" />
+      <mass
+        value="0.011825" />
+      <inertia
+        ixx="4.6112E-07"
+        ixy="4.4904E-08"
+        ixz="6.5696E-08"
+        iyy="1.8256E-06"
+        iyz="1.9194E-09"
+        izz="1.603E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Upper0_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.032 0.012 0.0"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Upper0_Link.STL" /> -->
+        <box size="0.05 0.013 0.013" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Upper0"
+    type="revolute">
+    <origin
+      xyz="0.030849 0.030849 0.001"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Upper0_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Lower0_Link">
+    <inertial>
+      <origin
+        xyz="0.0021 -0.01229 0.014923"
+        rpy="0 0 0" />
+      <mass
+        value="0.0041843" />
+      <inertia
+        ixx="2.6912E-06"
+        ixy="-7.8059E-22"
+        ixz="1.9359E-21"
+        iyy="2.618E-06"
+        iyz="1.691E-07"
+        izz="1.0838E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Lower0_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 -0.01 0.015"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Lower0_Link.STL" /> -->
+        <box size="0.01 0.01 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lower0"
+    type="revolute">
+    <origin
+      xyz="0.055094 0.0144 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="Upper0_Link" />
+    <child
+      link="Lower0_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.35"
+      upper="0.8"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Upper1_Link">
+    <inertial>
+      <origin
+        xyz="0.020917 0.016029 -0.0015554"
+        rpy="0 0 0" />
+      <mass
+        value="0.04" />
+      <inertia
+        ixx="4.6112E-07"
+        ixy="4.5017E-08"
+        ixz="-6.48E-08"
+        iyy="1.8256E-06"
+        iyz="-1.9135E-09"
+        izz="1.603E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Upper1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.032 0.012 0.0"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Upper1_Link.STL" /> -->
+          <box size="0.05 0.013 0.013" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Upper1"
+    type="revolute">
+    <origin
+      xyz="0.030849 -0.030849 0.001"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Upper1_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="0"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Lower1_Link">
+    <inertial>
+      <origin
+        xyz="-0.0021 -0.01229 0.014923"
+        rpy="0 0 0" />
+      <mass
+        value="0.0041843" />
+      <inertia
+        ixx="2.6912E-06"
+        ixy="-7.9333E-22"
+        ixz="1.9458E-21"
+        iyy="2.618E-06"
+        iyz="1.691E-07"
+        izz="1.0838E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Lower1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 -0.01 0.015"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Lower1_Link.STL" /> -->
+        <box size="0.01 0.01 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lower1"
+    type="revolute">
+    <origin
+      xyz="0.055094 0.0144 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="Upper1_Link" />
+    <child
+      link="Lower1_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.35"
+      upper="0.8"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Upper2_Link">
+    <inertial>
+      <origin
+        xyz="0.020919 0.016029 0.0015329"
+        rpy="0 0 0" />
+      <mass
+        value="0.04" />
+      <inertia
+        ixx="4.6112E-07"
+        ixy="4.4904E-08"
+        ixz="6.5696E-08"
+        iyy="1.8256E-06"
+        iyz="1.9194E-09"
+        izz="1.603E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh 
+          filename="../meshes/Upper2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.032 0.012 0.0"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Upper2_Link.STL" /> -->
+          <box size="0.05 0.013 0.013" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Upper2"
+    type="revolute">
+    <origin
+      xyz="-0.030849 -0.030849 0.001"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Upper2_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Lower2_Link">
+    <inertial>
+      <origin
+        xyz="0.0021 -0.01229 0.014923"
+        rpy="0 0 0" />
+      <mass
+        value="0.0041843" />
+      <inertia
+        ixx="2.6912E-06"
+        ixy="-2.8852E-22"
+        ixz="7.3531E-22"
+        iyy="2.618E-06"
+        iyz="1.691E-07"
+        izz="1.0838E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Lower2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 -0.01 0.015"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Lower2_Link.STL" /> -->
+        <box size="0.01 0.01 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lower2"
+    type="revolute">
+    <origin
+      xyz="0.055094 0.0144 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="Upper2_Link" />
+    <child
+      link="Lower2_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.35"
+      upper="0.8"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Upper3_Link">
+    <inertial>
+      <origin
+        xyz="0.020919 0.016029 0.0015329"
+        rpy="0 0 0" />
+      <mass
+        value="0.04" />
+      <inertia
+        ixx="4.6112E-07"
+        ixy="4.4904E-08"
+        ixz="6.5696E-08"
+        iyy="1.8256E-06"
+        iyz="1.9194E-09"
+        izz="1.603E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Upper3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 0 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0.032 0.012 0.0"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Upper3_Link.STL" /> -->
+        <box size="0.05 0.013 0.013" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Upper3"
+    type="revolute">
+    <origin
+      xyz="-0.030849 0.030849 0.001"
+      rpy="1.5708 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Upper3_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="0"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+  <link
+    name="Lower3_Link">
+    <inertial>
+      <origin
+        xyz="-0.0021 -0.01229 0.014923"
+        rpy="0 0 0" />
+      <mass
+        value="0.0041843" />
+      <inertia
+        ixx="2.6912E-06"
+        ixy="-2.7066E-22"
+        ixz="6.6511E-22"
+        iyy="2.618E-06"
+        iyz="1.691E-07"
+        izz="1.0838E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="../meshes/Lower3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 1 0.5" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 -0.01 0.015"
+        rpy="0 0 0" />
+      <geometry>
+        <!-- <mesh filename="../meshes/Lower3_Link.STL" /> -->
+        <box size="0.01 0.01 0.08" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Lower3"
+    type="revolute">
+    <origin
+      xyz="0.055094 0.0144 0"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="Upper3_Link" />
+    <child
+      link="Lower3_Link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-0.35"
+      upper="0.8"
+      effort="0.19"
+      velocity="12" />
+  </joint>
+</robot>
