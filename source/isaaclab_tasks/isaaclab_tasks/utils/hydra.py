@@ -22,6 +22,7 @@ from isaaclab.utils import replace_slices_with_strings, replace_strings_with_sli
 
 from isaaclab_tasks.utils.parse_cfg import load_cfg_from_registry
 
+HYDRA_FULL_ERROR = 1
 
 def register_task_to_hydra(
     task_name: str, agent_cfg_entry_point: str
