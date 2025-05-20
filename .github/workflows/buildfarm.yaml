@@ -1,0 +1,68 @@
+name: Build & deploy docs
+
+# to trigger this workflow, use the following command:
+# git tag v0.1.0-buildfarm
+# git push bar v0.1.0-buildfarm
+
+on:
+  push:
+    branches:
+      - buildfarm
+    tags:
+      - 'v*'
+
+jobs:
+  build-wheels:
+    name: Build Wheels
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup python
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+        architecture: x64
+
+    - name: Install dev requirements
+      working-directory: ./
+      shell: bash -e {0}
+      run: |
+        pip install build setuptools
+
+    - name: Build wheels
+      working-directory: ./
+      shell: bash -e {0}
+      run: |
+        python -m build ${{ github.workspace }}/source/isaaclab/
+        python -m build ${{ github.workspace }}/source/isaaclab_assets/
+        python -m build ${{ github.workspace }}/source/isaaclab_mimic/
+        python -m build ${{ github.workspace }}/source/isaaclab_rl/
+        python -m build ${{ github.workspace }}/source/isaaclab_tasks/
+
+    - name: Upload wheels as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: wheels
+        path: |
+          ${{ github.workspace }}/source/isaaclab/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_assets/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_mimic/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_rl/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_tasks/dist/*.whl
+
+    - name: Create Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: |
+          ${{ github.workspace }}/source/isaaclab/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_assets/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_mimic/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_rl/dist/*.whl
+          ${{ github.workspace }}/source/isaaclab_tasks/dist/*.whl
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
