@@ -81,8 +81,7 @@ agent:
   batch_size: 4096
   discount_factor: 0.99
   polyak: 0.005
-  actor_learning_rate: 5.0e-4
-  critic_learning_rate: 5.0e-4
+  learning_rate: 5.0e-4
   learning_rate_scheduler: null
   learning_rate_scheduler_kwargs: null
   observation_preprocessor: RunningStandardScaler
@@ -92,14 +91,11 @@ agent:
   random_timesteps: 50
   learning_starts: 50
   grad_norm_clip: 0
-  exploration:
-    noise: GaussianNoise
-    noise_kwargs:
-      mean: 0.0
-      std: 0.1
-    initial_scale: 1.0
-    final_scale: 1.0e-3
-    timesteps: null
+  exploration_noise: GaussianNoise
+  exploration_noise_kwargs:
+    mean: 0.0
+    std: 0.1
+  exploration_scheduler: max(1 - timestep / timesteps, 0.01)
   policy_delay: 2
   smooth_regularization_noise: GaussianNoise
   smooth_regularization_noise_kwargs:

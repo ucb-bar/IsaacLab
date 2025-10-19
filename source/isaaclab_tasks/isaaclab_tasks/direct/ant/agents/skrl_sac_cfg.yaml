@@ -76,8 +76,7 @@ agent:
   batch_size: 4096
   discount_factor: 0.99
   polyak: 0.005
-  actor_learning_rate: 5.0e-4
-  critic_learning_rate: 5.0e-4
+  learning_rate: 5.0e-4
   learning_rate_scheduler: null
   learning_rate_scheduler_kwargs: null
   observation_preprocessor: RunningStandardScaler
@@ -88,7 +87,6 @@ agent:
   learning_starts: 50
   grad_norm_clip: 0
   learn_entropy: True
-  entropy_learning_rate: 1.0e-3
   initial_entropy_value: 0.2
   target_entropy: null
   rewards_shaper: null
