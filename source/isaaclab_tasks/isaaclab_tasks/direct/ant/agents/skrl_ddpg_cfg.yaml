@@ -79,7 +79,7 @@ agent:
     sigma: 0.1
     base_scale: 0.5
     mean: 0.0
-    std: 0.1
+    std: 1.0
   exploration_scheduler: max(1 - timestep / timesteps, 0.01)
   rewards_shaper: null
   mixed_precision: False
