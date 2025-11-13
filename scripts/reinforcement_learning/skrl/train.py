@@ -44,7 +44,7 @@ parser.add_argument(
     "--ml_framework",
     type=str,
     default="torch",
-    choices=["torch", "jax", "jax-numpy"],
+    choices=["torch", "jax", "jax-numpy", "warp"],
     help="The ML framework used for training the skrl agent.",
 )
 parser.add_argument(
@@ -94,6 +94,8 @@ if args_cli.ml_framework.startswith("torch"):
     from skrl.utils.runner.torch import Runner
 elif args_cli.ml_framework.startswith("jax"):
     from skrl.utils.runner.jax import Runner
+elif args_cli.ml_framework.startswith("warp"):
+    from skrl.utils.runner.warp import Runner
 
 from isaaclab.envs import (
     DirectMARLEnv,
