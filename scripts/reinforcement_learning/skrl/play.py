@@ -209,10 +209,11 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, expe
     print(f"[INFO] Loading model checkpoint from: {resume_path}")
     runner.agent.load(resume_path)
     # set agent to evaluation mode
-    runner.agent.set_running_mode("eval")
+    runner.agent.enable_training_mode(False, apply_to_models=True)
 
     # reset environment
     obs, _ = env.reset()
+    states = env.state()
     timestep = 0
     # simulate environment
     while simulation_app.is_running():
@@ -221,7 +222,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, expe
         # run everything in inference mode
         with torch.inference_mode():
             # agent stepping
-            outputs = runner.agent.act(obs, timestep=0, timesteps=0)
+            outputs = runner.agent.act(obs, states, timestep=0, timesteps=0)
             # - multi-agent (deterministic) actions
             if hasattr(env, "possible_agents"):
                 actions = {a: outputs[-1][a].get("mean_actions", outputs[0][a]) for a in env.possible_agents}
@@ -230,6 +231,7 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, expe
                 actions = outputs[-1].get("mean_actions", outputs[0])
             # env stepping
             obs, _, _, _, _ = env.step(actions)
+            states = env.state()
         if args_cli.video:
             timestep += 1
             # exit the play loop after recording one video
