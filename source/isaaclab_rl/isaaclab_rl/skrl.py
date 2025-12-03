@@ -80,9 +80,7 @@ def SkrlVecEnvWrapper(
     elif ml_framework.startswith("warp"):
         from skrl.envs.wrappers.warp import wrap_env
     else:
-        ValueError(
-            f"Invalid ML framework for skrl: {ml_framework}. Available options are: 'torch', 'jax', 'warp'"
-        )
+        ValueError(f"Invalid ML framework for skrl: {ml_framework}. Available options are: 'torch', 'jax', 'warp'")
 
     # wrap and return the environment
     return wrap_env(env, wrapper)
