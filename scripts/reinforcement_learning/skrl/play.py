@@ -46,7 +46,7 @@ parser.add_argument(
     "--ml_framework",
     type=str,
     default="torch",
-    choices=["torch", "jax", "jax-numpy"],
+    choices=["torch", "jax", "warp"],
     help="The ML framework used for training the skrl agent.",
 )
 parser.add_argument(
