@@ -96,6 +96,8 @@ if args_cli.ml_framework.startswith("torch"):
     from skrl.utils.runner.torch import Runner
 elif args_cli.ml_framework.startswith("jax"):
     from skrl.utils.runner.jax import Runner
+elif args_cli.ml_framework.startswith("warp"):
+    from skrl.utils.runner.warp import Runner
 
 from isaaclab.envs import (
     DirectMARLEnv,
