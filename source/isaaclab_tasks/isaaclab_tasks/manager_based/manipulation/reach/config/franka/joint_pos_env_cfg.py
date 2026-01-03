@@ -31,12 +31,17 @@ class FrankaReachEnvCfg(ReachEnvCfg):
         self.scene.robot = FRANKA_PANDA_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
         # override rewards
         self.rewards.end_effector_position_tracking.params["asset_cfg"].body_names = ["panda_hand"]
+        self.rewards.end_effector_position_tracking.weight = -1.0
         self.rewards.end_effector_position_tracking_fine_grained.params["asset_cfg"].body_names = ["panda_hand"]
+        self.rewards.end_effector_position_tracking_fine_grained.weight = 1.0
         self.rewards.end_effector_orientation_tracking.params["asset_cfg"].body_names = ["panda_hand"]
+        self.rewards.end_effector_orientation_tracking.weight = -0.2
+        self.rewards.action_rate.weight = -5e-5
+        self.rewards.joint_vel.weight = -0.0001
 
         # override actions
         self.actions.arm_action = mdp.JointPositionActionCfg(
-            asset_name="robot", joint_names=["panda_joint.*"], scale=0.5, use_default_offset=True
+            asset_name="robot", joint_names=["panda_joint.*"], scale=0.2, use_default_offset=True
         )
         # override command generator body
         # end-effector is along z-direction
