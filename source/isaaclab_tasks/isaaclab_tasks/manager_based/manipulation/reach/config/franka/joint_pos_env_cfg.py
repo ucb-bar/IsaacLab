@@ -36,7 +36,7 @@ class FrankaReachEnvCfg(ReachEnvCfg):
         self.rewards.end_effector_position_tracking_fine_grained.weight = 1.0
         self.rewards.end_effector_orientation_tracking.params["asset_cfg"].body_names = ["panda_hand"]
         self.rewards.end_effector_orientation_tracking.weight = -0.2
-        self.rewards.action_rate.weight = -5e-5
+        self.rewards.action_rate.weight = -1e-3
         self.rewards.joint_vel.weight = -0.0001
 
         # override actions
